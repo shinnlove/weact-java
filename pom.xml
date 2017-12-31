@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.shinnlove.weact</groupId>
+    <artifactId>weact-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0</version>
+    <name>weact Maven Webapp</name>
+    <url>http://maven.apache.org</url>
+    <properties>
+        <spring.version>4.2.6.RELEASE</spring.version>
+        <hibernate.version>4.3.8.Final</hibernate.version>
+        <apache.cxf.version>3.1.7</apache.cxf.version>
+        <http.client.version>4.2.3</http.client.version>
+        <apache.httpclient.version>4.5.3</apache.httpclient.version>
+        <apache.httpmime.version>4.3.3</apache.httpmime.version>
+    </properties>
+    <dependencyManagement>
+        <dependencies>
+
+            <!-- 单元测试 -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.12</version>
+                <scope>test</scope>
+            </dependency>
+            <!-- slf4j-api -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>1.7.25</version>
+            </dependency>
+            <!-- log4j的日志门面slf4j -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-log4j12</artifactId>
+                <version>1.7.21</version>
+            </dependency>
+            <!-- log4j -->
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>1.2.17</version>
+            </dependency>
+
+            <!-- J2EE servlet api -->
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>3.1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet.jsp</groupId>
+                <artifactId>jsp-api</artifactId>
+                <version>2.2</version>
+            </dependency>
+            <!-- 支持jstl表达式 -->
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>jstl</artifactId>
+                <version>1.2</version>
+            </dependency>
+            <!-- jsp支持taglib库 可选 -->
+            <dependency>
+                <groupId>taglibs</groupId>
+                <artifactId>standard</artifactId>
+                <version>1.1.2</version>
+            </dependency>
+            <!--springframework-->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <!-- 这个jar版本较低，但是较高的quartz和spring结合用法有点区别，暂时先使用这个jar，注意：和spring-context-support不一样 -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-support</artifactId>
+                <version>2.0.6</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-orm</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jdbc</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <!-- 消息通信集成 -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jms</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.stefanbirkner</groupId>
+                <artifactId>system-rules</artifactId>
+                <version>1.16.1</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- h2数据库 -->
+            <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>1.4.196</version>
+                <!--<scope>test</scope>-->
+            </dependency>
+            <!--mysql驱动包-->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>5.1.35</version>
+            </dependency>
+            <!-- 数据库连接池hibernate-c3p0 -->
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-c3p0</artifactId>
+                <version>${hibernate.version}</version>
+            </dependency>
+            <!-- 接入hibernate -->
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-core</artifactId>
+                <version>${hibernate.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-entitymanager</artifactId>
+                <version>${hibernate.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-ehcache</artifactId>
+                <version>${hibernate.version}</version>
+            </dependency>
+
+            <!-- 切面编程 -->
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+                <version>1.6.8</version>
+            </dependency>
+
+            <!-- 其他需要的包（apache反射扫描类的包） 这跟commons-logging没关系 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.4</version>
+            </dependency>
+
+            <!-- json解析-fastjson安全版本 -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>1.1.46.sec01</version>
+            </dependency>
+
+            <!-- apache commons-logging -->
+            <dependency>
+                <groupId>commons-logging</groupId>
+                <artifactId>commons-logging</artifactId>
+                <version>1.1.1</version>
+            </dependency>
+
+            <!-- 文件上传 -->
+            <dependency>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                <version>1.3.1</version>
+            </dependency>
+
+            <!-- 解析Excel -->
+            <dependency>
+                <groupId>net.sourceforge.jexcelapi</groupId>
+                <artifactId>jxl</artifactId>
+                <version>2.6.12</version>
+            </dependency>
+
+            <!-- 定时调度 -->
+            <dependency>
+                <groupId>org.quartz-scheduler</groupId>
+                <artifactId>quartz</artifactId>
+                <version>1.8.6</version>
+            </dependency>
+
+            <!-- http client -->
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${apache.httpclient.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpmime</artifactId>
+                <version>${apache.httpmime.version}</version>
+            </dependency>
+
+            <!-- apache active mq 5.11以后版本增加springframework有冲突，要exclude掉-->
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
+                <artifactId>activemq-all</artifactId>
+                <version>5.10.0</version>
+            </dependency>
+
+            <!-- spring-websocket -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-websocket</artifactId>
+                <version>4.3.10.RELEASE</version>
+            </dependency>
+
+            <!-- servlet实现WebSocket最重要的注解 -->
+            <dependency>
+                <groupId>org.apache.tomcat</groupId>
+                <artifactId>tomcat-websocket-api</artifactId>
+                <version>RELEASE</version>
+            </dependency>
+
+            <!-- 使用apache cxf/xfire 发布webservice服务 -->
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-frontend-jaxws</artifactId>
+                <version>${apache.cxf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-transports-http</artifactId>
+                <version>${apache.cxf.version}</version>
+            </dependency>
+
+            <!-- module dependency -->
+            <dependency>
+                <groupId>com.shinnlove.weact</groupId>
+                <artifactId>weact-common-util</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.shinnlove.weact</groupId>
+                <artifactId>weact-common-service-facade</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.shinnlove.weact</groupId>
+                <artifactId>weact-common-service-integration</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.shinnlove.weact</groupId>
+                <artifactId>weact-common-dal</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.shinnlove.weact</groupId>
+                <artifactId>weact-core-model</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.shinnlove.weact</groupId>
+                <artifactId>weact-core-service</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.shinnlove.weact</groupId>
+                <artifactId>weact-biz-service-impl</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.shinnlove.weact</groupId>
+                <artifactId>weact-web</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+    <modules>
+        <module>app/web</module>
+        <module>app/biz/service-impl</module>
+        <module>app/core/service</module>
+        <module>app/core/model</module>
+        <module>app/common/dal</module>
+        <module>app/common/service/integration</module>
+        <module>app/common/service/facade</module>
+        <module>app/common/util</module>
+    </modules>
+    <build>
+        <!-- 非常重要，不要在parent中指定名称，否则坑爹的所有子模块都会打出相同的名字来! -->
+        <!--<finalName>MultiSpring</finalName>-->
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
